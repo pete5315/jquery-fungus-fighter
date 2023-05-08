@@ -6,7 +6,6 @@ let yourAP=100;
 let hp=0;
 let ap=0;
 
-
 function onReady() {
 //add event listeners
     $('.attack-btn').on('click', attackBtn)
@@ -15,8 +14,8 @@ function onReady() {
 function attackBtn() {
     //get hp/ap values associated with the attack chosen
     if($(this).hasClass('arcane-scepter')) {
-        hp=12;
-        ap=14;    
+        hp=14;
+        ap=12;    
     };
 
     if($(this).hasClass('entangle')) {
@@ -55,20 +54,6 @@ function attackFungus(hp,ap) {
     updateDisplay();
 }
 
-//runs regeneHP every 1000ms
-setInterval(regenHP, 1000)
-
-function regenHP() {
-    //check if dead
-    if(fungusHP===0) {
-    } else if(fungusHP<50) { //if not dead, check if hp<50
-        //regen by 1  
-        fungusHP+=1;
-    }
-    //update display
-    updateDisplay();
-}
-
 function updateDisplay() {
     //update hp and ap on the DOM
     $('.hp-text').text(`${fungusHP} HP`)
@@ -87,4 +72,18 @@ function updateDisplay() {
     //update the meters to match the amounts
     $('#hp-meter').val(`${fungusHP}`)
     $('#ap-meter').val(`${yourAP}`)
+}
+
+//runs regeneHP every 1000ms
+setInterval(regenHP, 1000)
+
+function regenHP() {
+    //check if dead
+    if(fungusHP===0) {
+    } else if(fungusHP<50) { //if not dead, check if hp<50
+        //regen by 1  
+        fungusHP+=1;
+    }
+    //update display
+    updateDisplay();
 }

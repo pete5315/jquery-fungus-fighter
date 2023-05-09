@@ -14,44 +14,36 @@ function onReady() {
 function attackBtn() {
     //get hp/ap values associated with the attack chosen
     if($(this).hasClass('arcane-scepter')) {
-        hp=14;
-        ap=12;    
+        fungusHP-=14;
+        yourAP-=12;    
     };
 
     if($(this).hasClass('entangle')) {
-        hp=9;
-        ap=23;
+        fungusHP-=9;
+        yourAP-=23;
     };
 
     if($(this).hasClass('dragon-blade')) {
-        hp=38;
-        ap=47;
+        fungusHP-=47;
+        yourAP-=38;
     };
 
     if($(this).hasClass('star-fire')) {
-        hp=25;
-        ap=33;    
+        fungusHP-=25;
+        yourAP-=33;    
     };
-    //plug those hp/ap values into attack function
-    attackFungus(hp,ap);
 
-}
-
-function attackFungus(hp,ap) {
     // check if either global variables are 0
     if (fungusHP===0 || yourAP === 0) {
         return;
     }
-    //lower fungus hp
-    fungusHP-=hp;
     //add a floor at 0
     fungusHP=(fungusHP+Math.abs(fungusHP))/2;
-    //reduce your ap
-    yourAP-=ap;
     //add a floor at 0
     yourAP=(yourAP+Math.abs(yourAP))/2;
     //call the display update function
     updateDisplay();
+
 }
 
 function updateDisplay() {
@@ -61,13 +53,13 @@ function updateDisplay() {
 
     //check if fungus is dead
     if(fungusHP===0) {
-        $('.freaky-fungus').addClass('dead');
-        $('.attack-btn').addClass('disabled');
+        $('.freaky-fungus').removeClass('walk').addClass('dead');
+        $('.attack-btn').prop('disabled', true)
     }
     //check if humanity is doomed
     if(yourAP===0) {
         $('.freaky-fungus').removeClass('walk').addClass('jump');
-        $('.attack-btn').addClass('disabled');
+        $('.attack-btn').prop('disabled', true)
     }
     //update the meters to match the amounts
     $('#hp-meter').val(`${fungusHP}`)
@@ -79,8 +71,7 @@ setInterval(regenHP, 1000)
 
 function regenHP() {
     //check if dead
-    if(fungusHP===0) {
-    } else if(fungusHP<50) { //if not dead, check if hp<50
+    if(fungusHP<50 && fungusHP!==0) { //if not dead, check if hp<50
         //regen by 1  
         fungusHP+=1;
     }

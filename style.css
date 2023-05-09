@@ -57,6 +57,11 @@ progress {
     animation-iteration-count: infinite;
 }
 
+.freaky-fungus.jump {
+    background: url('images/mushroom-idle.png') no-repeat -21px;
+    animation-name: idle;
+    animation-timing-function: steps(8);
+}
 @keyframes idle {
   from { background-position: -21px; }
   to { background-position: -4872px; }
@@ -67,13 +72,6 @@ progress {
     animation-name: walk;
     animation-timing-function: steps(6);
 }
-
-.freaky-fungus.jump {
-    background: url('images/mushroom-idle.png') no-repeat -21px;
-    animation-name: idle;
-    animation-timing-function: steps(8);
-}
-
 @keyframes walk {
   from { background-position: -21px; }
   to { background-position: -3654px; }
@@ -162,6 +160,9 @@ body:has( .freaky-fungus.dead) {
     background-size: cover;
     cursor: pointer;
 }
+.attack-btn[disabled] {
+    cursor: not-allowed;
+}
 
 .attack-btn[disabled]:before {
     content: '';
@@ -171,9 +172,6 @@ body:has( .freaky-fungus.dead) {
     background: rgb(59 59 59 / 70%);
     top: 0;
     left: 0;
-}
-.disabled {
-    cursor: not-allowed;
 }
 
 .attack-btn.arcane-scepter {

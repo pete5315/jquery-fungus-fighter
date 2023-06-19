@@ -1,3 +1,5 @@
+This was a homework assignment. I needed to link up health bars, attacks with logic, and add some neat features (like regeneration for the monster). Pretty neat.
+
 # jQuery Fungus Fighter
 
 Fight mutant fungus villains, with jQuery!

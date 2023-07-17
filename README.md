@@ -1,4 +1,4 @@
-This was a homework assignment. I needed to link up health bars, attacks with logic, and add some neat features (like regeneration for the monster). Pretty neat.
+This was my favorite homework assignment that Prime provided. I needed to link up health bars and attacks with logic and also to add some neat features (like regeneration for the monster). Pretty neat.
 
 # jQuery Fungus Fighter
 
